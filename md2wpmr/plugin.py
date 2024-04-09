@@ -14,7 +14,8 @@ class Export(mkdocs.plugins.BasePlugin):
     config_scheme = (
         ('number_column', mkdocs.config.config_options.Type(int)),
         ('number_row_pages', mkdocs.config.config_options.Type(int)),
-        ('number_row_toc', mkdocs.config.config_options.Type(int))
+        ('number_row_toc', mkdocs.config.config_options.Type(int)),
+        ('toc_page_level_depth', mkdocs.config.config_options.Type(int))
     )
 
     # https://www.mkdocs.org/dev-guide/plugins/#on_config
@@ -34,6 +35,7 @@ class Export(mkdocs.plugins.BasePlugin):
             os.mkdir(self.path_matrix_mkdocs_column)
             os.mkdir(self.path_matrix_mkdocs_cell_toc)
             os.mkdir(self.path_matrix_mkdocs_cell_pages)
+            self.toc_page_level_depth = self.config['toc_page_level_depth']
         else:
             self.export = False
         # print(self.config)
